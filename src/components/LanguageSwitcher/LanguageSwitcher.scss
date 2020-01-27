@@ -1,0 +1,35 @@
+@import '../../sass/helpers';
+
+$padding: 7px;
+$font-size-radio-button: 14px;
+$padding-x-radio-button: 7px;
+$padding-y-radio-button: 3px;
+
+.language-switcher {
+  margin: 0 auto;
+  padding: em($padding);
+
+  &__radio-button {
+    padding: em($padding-y-radio-button, $font-size-radio-button) em($padding-x-radio-button, $font-size-radio-button);
+    font-size: em($font-size-radio-button);
+
+    & .radio-button__input:checked ~ .radio-button__label {
+      color: $secondary-text-color;
+    }
+  
+  }
+
+  &__group {
+    position: relative;
+    display: flex;
+  }
+
+  &__underline {
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    background-color: $secondary-text-color;
+    transition: .2s all ease;
+  }
+  
+}
