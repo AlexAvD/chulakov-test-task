@@ -1,0 +1,28 @@
+@import '../../sass/vars';
+
+.header {
+  box-shadow: 0 5px 10px 0 $header-shadow-color;
+
+  &__top {
+    background-color: $header-top-bg;
+  }
+
+  &__main {
+    background: linear-gradient(45deg, $primary-color, $secondary-color);
+  }
+}
+
+.header-top,
+.header-main {
+
+  &__container {
+    display: flex;
+  }
+}
+
+.header-main {
+  &__container {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
