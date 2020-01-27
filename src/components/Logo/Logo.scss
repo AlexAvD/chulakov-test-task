@@ -1,0 +1,50 @@
+@import "../../sass/helpers";
+
+$padding-y: 10px;
+
+$font-size: $fs-base;
+$font-size-title: 24px;
+$font-size-subtitle: 20px;
+
+$letter-spacing-title: 8px;
+$letter-spacing-subtitle: 4px;
+
+$line-height: 30px;
+
+.logo {
+  font-size: $font-size;
+  padding: em($padding-y, $font-size) 0;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    text-align: center;
+    line-height: em($line-height);
+    user-select: none;
+  }
+
+  &__title,
+  &__subtitle {
+    color: $secondary-text-color;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    $letter-spacing: em($letter-spacing-title, $font-size-title);
+
+    font-size: em($font-size-title);
+    font-weight: 900;
+    letter-spacing: $letter-spacing;
+    text-indent: $letter-spacing;
+  }
+
+  &__subtitle {
+    $letter-spacing: em($letter-spacing-subtitle, $font-size-subtitle);
+
+    font-size: em($font-size-subtitle);
+    font-weight: 300;
+    letter-spacing: $letter-spacing;
+    text-indent: $letter-spacing;
+  }
+}
