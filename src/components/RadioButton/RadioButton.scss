@@ -1,0 +1,25 @@
+
+@import '../../sass/helpers';
+
+.radio-button {
+  $block: &;
+
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+ 
+  &__input {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+
+    &:checked ~ #{$block}__label {
+      color: $primary-text-color;
+    }
+  }
+
+  &__label {
+    transition: 0.2s color;
+    color: $text-faded;
+  }
+}
