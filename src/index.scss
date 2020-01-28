@@ -26,17 +26,25 @@ h4,
 p,
 ul[class],
 ol[class],
-li {
+li,
+fieldset {
   margin: 0;
+}
+
+fieldset,
+legend,
+ul[class],
+ol[class] {
+  padding: 0;
 }
 
 ul[class],
 ol[class] {
   list-style: none;
-  padding: 0;
 }
 
-img {
+img,
+video {
   max-width: 100%;
   display: block;
 }
@@ -46,6 +54,10 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+fieldset {
+  border: 0;
 }
 
 body,
