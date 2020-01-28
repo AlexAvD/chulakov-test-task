@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { Search as SearchIcon } from 'react-feather'
 import { translate } from '../../locales'
-import './Search.scss'
+import './index.scss'
 
 const Search = ({ language }) => {
   const [ search, setSearch ] = useState('');
@@ -31,7 +31,7 @@ const Search = ({ language }) => {
           className="search__input"
           value={search}
           type="text" 
-          placeholder={translate(language, 'search')} 
+          placeholder={translate(language, 'search-placeholder')} 
           autoComplete="off" 
         />
         <button 

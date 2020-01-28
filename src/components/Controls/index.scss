@@ -1,0 +1,63 @@
+@import '../../sass/helpers';
+
+$margin-bottom: 15px;
+$title-fs: 18px;
+$title-ls: 2px;
+$title-margin-bottom: 5px;
+
+$radio-button-label-fs: 18px;
+$radio-button-label-margin-y: 2px;
+$radio-button-margin-right: 16px;
+$radio-button-icon-size: 24px;
+
+$radio-button-icon-margin: 5px;
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: $margin-bottom;
+
+  &__title {
+    margin-bottom: em($title-margin-bottom, $title-fs);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: em($title-fs);
+    user-select: none;
+    letter-spacing: em($title-ls, $title-fs);
+  }
+
+  .radio-button {
+    &:hover .radio-button__label,
+    &__input:checked ~ .radio-button__label {
+      color: $primary-color;
+    }
+
+    &__label {
+      color: $primary-text-color;
+      font-size: em($radio-button-label-fs);
+      margin: em($radio-button-label-margin-y, $radio-button-label-fs) 0;
+    }
+
+    &__icon {
+      vertical-align: top;
+      width: em($radio-button-icon-size, $radio-button-label-fs);
+      height: em($radio-button-icon-size, $radio-button-label-fs);
+    }
+
+    &:not(:last-of-type) {
+      margin-right: em($radio-button-margin-right);
+    }
+  } 
+
+  &__view {
+    .radio-button__icon {
+      margin-right: em($radio-button-icon-margin, $radio-button-label-fs);
+    }
+  }
+
+  .sliding-underline {
+    height: 2px;
+    background-color: $primary-color;
+  }
+}

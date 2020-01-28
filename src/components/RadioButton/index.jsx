@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import './RadioButton.scss';
+import './index.scss';
 
-const RadioButton = forwardRef(({className, value, isChecked, label, onChange, name}, ref) => {
+const RadioButton = ({className, value, isChecked, children, onChange, name}) => {
   return (
-    <label className={`${className ? className + ' ' : className}radio-button`} ref={ref}>
+    <label className={`${className ? className + ' ' : className}radio-button`}>
       <input
         onChange={onChange}
         className="radio-button__input" 
@@ -13,14 +13,15 @@ const RadioButton = forwardRef(({className, value, isChecked, label, onChange, n
         checked={isChecked}
         value={value}
       />
-      <span className="radio-button__label">{label}</span>
+      <span className="radio-button__label">
+        {children}
+      </span>
     </label>
   );
-});
+};
 
 RadioButton.propTypes = {
   value: PropTypes.string,
-  label: PropTypes.string,
   isChecked: PropTypes.bool,
   className: PropTypes.string,
   name: PropTypes.string
@@ -29,7 +30,6 @@ RadioButton.propTypes = {
 RadioButton.defaultProps = {
   className: '',
   value: '',
-  label: '',
   name: '',
   isChecked: false
 }

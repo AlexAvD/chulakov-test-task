@@ -1,0 +1,9 @@
+.sliding-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000;
+  transition: .2s all ease;
+}

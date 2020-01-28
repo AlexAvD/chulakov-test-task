@@ -1,0 +1,59 @@
+@import '../../sass/helpers';
+
+$padding-info: 15px;
+
+.contact {
+  border-bottom: 1px solid $contact-border-color;
+  
+  &__inner {
+    display: flex;
+  }
+
+  &__info {
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+
+  &__info-group {
+    display: flex;
+  }
+
+  &__avatar {
+    margin-right: 15px;
+  }
+
+  &__info-group {
+    flex: 1 1 70%;
+  }
+
+  &__age {
+    flex: 1 1 10%;
+  }
+
+  &__phone {
+    flex: 1 1 20%;
+    padding-right: 45px;
+  }
+
+  &__name,
+  &__age,
+  &__phone,
+  &__favourite {
+    display: flex;
+    align-items: center;
+  }
+
+  &__favourite {
+    top: 0;
+  }
+
+  &__phrase,
+  &__video {
+    display: none;
+  }
+
+  &__video {
+    
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../../sass/helpers';
+
+$size: 60px;
+$container-padding: 2px;
+$image-margin-top: 10px;
+
+.avatar {
+
+  &__container {
+    width: em($size);
+    height: em($size);
+    padding: em($container-padding);
+    border-radius: em($size);
+    overflow: hidden;
+    background: linear-gradient(lighten($primary-color, 20%), lighten($secondary-color, 20%));
+  }
+
+  &__image {
+    margin-top: em($image-margin-top);
+  }
+}

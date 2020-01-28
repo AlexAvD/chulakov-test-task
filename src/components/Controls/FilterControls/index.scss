@@ -1,0 +1,11 @@
+@import '../../../sass/helpers';
+
+$sort-margin-r: 50px;
+
+.filter-controls {
+  display: flex;
+
+  &__sort {
+    margin-right: em($sort-margin-r);
+  }
+}

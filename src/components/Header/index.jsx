@@ -1,8 +1,8 @@
 import React from 'react';
-import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
-import Search from '../Search/Search';
-import Logo from '../Logo/Logo';
-import './Header.scss';
+import LanguageSwitcher from '../LanguageSwitcher';
+import Search from '../Search';
+import Logo from '../Logo';
+import './index.scss';
 
 
 const Header = () => {

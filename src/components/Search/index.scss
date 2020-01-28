@@ -36,10 +36,6 @@ $padding-right: 40px;
       outline: 0;
       background-size: 100% 100%, 100%;
     }
-
-    &:focus::placeholder {
-      color: transparent;
-    }
   }
 
   &__submit {
@@ -54,7 +50,6 @@ $padding-right: 40px;
     
     &:focus {
       outline: none;
-
     }
   }
 

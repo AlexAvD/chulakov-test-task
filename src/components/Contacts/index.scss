@@ -1,0 +1,104 @@
+@import '../../sass/helpers';
+
+$contact-review-favourite-margin-top: 15px;
+$contact-review-shadow-color: transparentize($black, 0.90);
+$contact-review-name-fs: 18px;
+
+.contacts {
+  margin-left: -15px;
+  margin-right: -15px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .contact__inner {
+    margin: 15px;
+  }
+  
+}
+
+.contacts--preview {
+
+  .contacts__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .contact {
+    border: 0;
+    width: 50%;
+
+    &__inner {
+      box-shadow: 
+        0 0px 2px 0 $contact-review-shadow-color,
+        0 2px 2px 0 $contact-review-shadow-color,
+        0 4px 4px 0 $contact-review-shadow-color,
+        0 8px 8px 0 $contact-review-shadow-color;
+    }
+  }
+
+  
+
+  .contact--video {
+    width: 100%;
+
+    .contact__info,
+    .contact__video { 
+      width: 50%;
+    }
+
+    .contact__info {
+      margin-right: 30px;
+    }
+  }
+
+  .contact__info {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .contact__video,
+  .contact__phrase {
+    display: block;
+  }
+
+  .contact__name {
+    font-size: em($contact-review-name-fs);
+  }
+
+  .contact__name,
+  .contact__phone  {
+    font-weight: 600;
+  }
+
+  .contact__phone {
+    padding: 0;
+    
+  }
+
+  .contact__age {
+    color: $text-faded;
+  }
+
+  .contact__info-group,
+  .contact__age,
+  .contact__phone,
+  .contact__phrase {
+    margin-bottom: 6px;
+  }
+
+  .contact__info-group,
+  .contact__age,
+  .contact__phone {
+    flex: 0 0 auto;
+  }
+
+  .contact__favourite {
+    height: auto;
+    right: 15px;
+    top: 15px;
+    margin-top: em($contact-review-favourite-margin-top);
+  }
+}

@@ -7,6 +7,10 @@
   cursor: pointer;
   text-align: center;
   user-select: none;
+
+  &:hover &__label {
+    color: $primary-text-color;
+  }
  
   &__input {
     position: absolute;
@@ -19,6 +23,7 @@
   }
 
   &__label {
+    display: inline-block;
     transition: 0.2s color;
     color: $text-faded;
   }

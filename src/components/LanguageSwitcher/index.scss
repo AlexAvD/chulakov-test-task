@@ -9,27 +9,17 @@ $padding-y-radio-button: 3px;
   margin: 0 auto;
   padding: em($padding);
 
-  &__radio-button {
+  .radio-button {
     padding: em($padding-y-radio-button, $font-size-radio-button) em($padding-x-radio-button, $font-size-radio-button);
     font-size: em($font-size-radio-button);
 
-    & .radio-button__input:checked ~ .radio-button__label {
+    &:hover .radio-button__label,
+    .radio-button__input:checked ~ .radio-button__label {
       color: $secondary-text-color;
     }
-  
   }
 
-  &__group {
-    position: relative;
-    display: flex;
-  }
-
-  &__underline {
-    height: 1px;
-    position: absolute;
-    bottom: 0;
+  .sliding-underline {
     background-color: $secondary-text-color;
-    transition: .2s all ease;
   }
-  
 }

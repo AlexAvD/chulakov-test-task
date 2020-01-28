@@ -1,20 +1,20 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { setFavouriteAction } from '../../redux/actoins/dataActions'
-import Controls from '../Controls/Controls'
-import './Main.scss'
+import Controls from '../Controls'
+import Contacts from '../Contacts'
+import './index.scss'
 
-const Main = ({ currentLanguage, data }) => {
+const Main = () => {
   return (
     <main className="main">
       <div className="main__container container">
-        <Controls currentLanguage={currentLanguage} />
+        <Controls />
+        <Contacts />
       </div>
     </main>
   )
 }
 
+/* 
 Main.propTypes = {
   currentLanguage: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
@@ -30,6 +30,6 @@ const mapDispatchToProps = (dispatch) => ({
   setFavourite: (id) => {
     dispatch(setFavouriteAction(id));
   }
-})
+}) */
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default Main
