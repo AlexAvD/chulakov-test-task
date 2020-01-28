@@ -2,23 +2,24 @@ $light-blue : #00B0FC;
 $blue       : #0056FC;
 $black      : #000;
 $white      : #fff;
+$whisper    : #E9E9E9;
 $gray       : #8A8A8A;
 
 $primary-color  : $light-blue;
-$secondary-color: $blue;
+$secondary-color: adjust-hue($primary-color, 30deg);
 
 $primary-text-color: $black;
 $secondary-text-color: $white;
 
-$text-color-1 : $white;
-$text-color-2 : $black;
 $text-faded   : $gray;
+
+$fs-base : 16px;
 
 // header
 $header-shadow-color: transparentize($color: $black, $amount: 0.8);
 $header-top-bg: $black;
 
+$fs-language-switcher-text: 14px; 
 
-$fs-base : 16px;
-
-$fs-language-switcher-text: 14px;
+// contact
+$contact-border-color: $whisper;
