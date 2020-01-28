@@ -1,16 +1,40 @@
 const translations = {
   ru: {
-    search: 'Поиск',
-    table: 'Таблица',
-    preview: 'Превью',
-    view: 'Вид'
+    'search-placeholder': 'Поиск',
+
+    'view-title': 'Вид',
+    'view-item-table': 'Таблица',
+    'view-item-preview': 'Превью',
+    
+    'filter-sort-title': 'Сортировка',
+    'filter-sort-field-id': 'ID',
+    'filter-sort-field-name': 'Имя',
+    'filter-sort-field-age': 'Возраст',
+
+    'filter-order-title': 'Порядок',
+    'filter-order-ascending': 'По возрастанию',
+    'filter-order-descending': 'По убыванию',
+
+    'years': [ 'лет', 'год', 'года' ]
   },
 
   en: {
-    search: 'Search',
-    table: 'Table',
-    preview: 'Preview',
-    view: 'View'
+    'search-placeholder': 'Search',
+
+    'view-title': 'View',
+    'view-item-table': 'Table',
+    'view-item-preview': 'Preview',
+    
+    'filter-sort-title': 'Sort by',
+    'filter-sort-field-id': 'ID',
+    'filter-sort-field-name': 'Name',
+    'filter-sort-field-age': 'Age',
+
+    'filter-order-title': 'Order by',
+    'filter-order-ascending': 'Ascending',
+    'filter-order-descending': 'Descending',
+
+    'years': 'years'
   }
 }
 
