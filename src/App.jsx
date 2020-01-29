@@ -1,55 +1,72 @@
 import React, { useEffect } from 'react'
-import { Provider } from 'react-redux'
 import store from './redux/store'
+import { useLocation } from 'react-router-dom'
+import axios from 'axios'
+import qs from 'query-string'
 import { setDataAction } from './redux/actoins/dataActions';
+import { setViewAction } from './redux/actoins/viewActions';
 
 import Header from './components/Header'
 import Main from './components/Main';
 
 import './App.scss';
+import { setFilterAction } from './redux/actoins/filterActions';
 
-const data = [
-	{
-		"id": 0,
-		"favourite": false,
-		"name": "Gilbert Morton",
-		"age": 22,
-		"phone": "(369) 432-9206",
-		"image": "sheep",
-		"phrase": "Japman somam mes lizmasapa om zefopi ki wa ogju mofrajnir denba uc famoso opeipu woul.",
-		"video": "shoe"
-	},
-	{
-		"id": 1,
-		"favourite": true,
-		"name": "Jeffery Davidson",
-		"age": 57,
-		"phone": "(415) 670-6901",
-		"image": "pig",
-		"phrase": "Lejtefup boc hi ricge tela mo ragdi vutomeh kuhup veosubu pe ceso juhzustum ipagagcub fu."
-	},
-	{
-		"id": 2,
-		"favourite": false,
-		"name": "Lela Clark",
-		"age": 30,
-		"phone": "(635) 873-1879",
-		"image": "cat",
-		"phrase": "Bup dod elavor etudorkaw bapibune peijbur biot cuskoruc no liwuduk osi lazob zu rij buduhkaf.",
-		"video": "boy"
-  }
-]
+const possibleFilterParams = {
+	sort: ['id', 'age', 'name'],
+	order: ['descending', 'ascending']
+}
+
+const possibleViewParams = ['table', 'preview']
+const dataUrl = 'http://localhost:8080/data'
 
 function App() {
-  useEffect(() => {
-    store.dispatch(setDataAction(data))
+	const { pathname, search } = useLocation();
+	
+	useEffect(() => {
+		if (pathname === '/' && search) {
+			const params = qs.parse(search);
+			const filter = {};
+
+			for (const param in params) {
+				const paramValue = params[param];
+
+				if (paramValue) {
+					if (param in possibleFilterParams) {
+						if (possibleFilterParams[param].indexOf(paramValue) !== -1) {
+							filter[param] = paramValue;
+						} 
+					} else if (param === 'search') {
+						filter[param] = paramValue;
+					} else if (param === 'view') {
+						if (possibleViewParams.indexOf(paramValue) !== -1) {
+							store.dispatch(setViewAction(paramValue));
+						}
+					}
+				}
+			}
+
+			if (Object.keys(filter).length) {
+				store.dispatch(setFilterAction(filter));
+			}
+		}
+
+		axios.get(dataUrl)
+			.then(response => response.data)
+			.then(data => {
+				store.dispatch(setDataAction(data))
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	// eslint-disable-next-line
   }, [])
 
   return (
-    <Provider store={store}>
+    <div className="wrapper">
       <Header />
       <Main />
-    </Provider>
+    </div>
   );
 }
 
