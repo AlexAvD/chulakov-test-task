@@ -1,0 +1,23 @@
+@mixin xs-max {
+  @media (max-width : $xs) {
+    @content;
+  }
+}
+
+@mixin sm-max {
+  @media (max-width : $sm) {
+    @content;
+  }
+}
+
+@mixin md-max {
+  @media (max-width : $md) {
+    @content;
+  }
+}
+
+@mixin lg-max {
+  @media (max-width : $lg) {
+    @content;
+  }
+}

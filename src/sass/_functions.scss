@@ -1,5 +1,3 @@
-@import './vars';
-
 @function em($pixels, $context: $fs-base) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
