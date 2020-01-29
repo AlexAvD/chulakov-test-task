@@ -1,1 +1,18 @@
-@import './sass/vars';
+@import './sass/helpers';
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  @include lg-max {
+    max-width: 780px;
+  }
+}

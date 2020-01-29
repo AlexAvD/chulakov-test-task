@@ -59,15 +59,3 @@ select {
 fieldset {
   border: 0;
 }
-
-body,
-#root {
-  min-height: 100vh;
-} 
-
-.container {
-  max-width: 1200px;
-  width: 100%;
-  padding: 0 15px;
-  margin: 0 auto;
-}
