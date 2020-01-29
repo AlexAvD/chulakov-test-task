@@ -4,6 +4,7 @@ import cat      from '../../../images/avatars/cat.svg'
 import dog      from '../../../images/avatars/dog.svg'
 import fox      from '../../../images/avatars/fox.svg'
 import koala    from '../../../images/avatars/koala.svg'
+import lion    from '../../../images/avatars/lion.svg'
 import owl      from '../../../images/avatars/owl.svg'
 import penguin  from '../../../images/avatars/penguin.svg'
 import pig      from '../../../images/avatars/pig.svg'
@@ -17,6 +18,7 @@ const avatars = {
   dog,
   fox,
   koala,
+  lion,
   owl,
   penguin,
   pig,
@@ -26,7 +28,7 @@ const avatars = {
 }
 
 const pickAvatar = (name) => {
-  return avatars[name];
+  return avatars[name] || avatars['react'];
 }
 
 const Avatar = ({ name, alt }) => {

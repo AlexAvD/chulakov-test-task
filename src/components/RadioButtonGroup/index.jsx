@@ -12,7 +12,7 @@ const RadioButtonGroup = ({ children, onChange }) => {
 
   useEffect(() => {
     setUnderlinedEl(getUnderlinedEl());
-  }, []);
+  }, [children]);
 
   const radioButtons = React.Children.map(children, (child) => {
     return (

@@ -2,7 +2,7 @@
 @import '../../sass/helpers';
 
 .radio-button {
-  $block: &;
+  $radio-button: &;
 
   cursor: pointer;
   text-align: center;
@@ -17,7 +17,7 @@
     left: -9999px;
     opacity: 0;
 
-    &:checked ~ #{$block}__label {
+    &:checked ~ #{$radio-button}__label {
       color: $primary-text-color;
     }
   }

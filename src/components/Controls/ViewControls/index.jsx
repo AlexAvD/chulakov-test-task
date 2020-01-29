@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { useLocation, useHistory } from 'react-router-dom'
 import { translate } from '../../../locales'
-import store from '../../../redux/store'
 import { setViewAction } from '../../../redux/actoins/viewActions';
+import { handleLocationSearch } from '../../../helpers'
 import { 
   List as ListIcon, 
   Layout as LaoutIcon 
@@ -12,9 +13,14 @@ import RadioButtonGroup from '../../RadioButtonGroup';
 import './index.scss'
 
 
-const ViewControls = ({ language, view }) => {
+const ViewControls = ({ language, view, setView }) => {
+  const history = useHistory();
+  const location = useLocation();
+
   const onChange = (e) => {
-    store.dispatch(setViewAction(e.target.value))
+    setView(e.target.value);
+
+    history.push(handleLocationSearch(location.search, { view: e.target.value }));
   };
 
   return (
@@ -55,4 +61,8 @@ const mapStateToProps = (state) => ({
   view: state.view
 })
 
-export default connect(mapStateToProps)(ViewControls)
+const mapDispatchToProps = (dispatch) => ({
+  setView: (view) => dispatch(setViewAction(view))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewControls)

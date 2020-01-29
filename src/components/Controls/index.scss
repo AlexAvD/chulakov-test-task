@@ -6,7 +6,7 @@ $title-ls: 2px;
 $title-margin-bottom: 5px;
 
 $radio-button-label-fs: 18px;
-$radio-button-label-margin-y: 2px;
+$radio-button-label-margin-b: 3px;
 $radio-button-margin-right: 16px;
 $radio-button-icon-size: 24px;
 
@@ -17,6 +17,12 @@ $radio-button-icon-margin: 5px;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: $margin-bottom;
+
+  @include xs-max {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 
   &__title {
     margin-bottom: em($title-margin-bottom, $title-fs);
@@ -32,11 +38,11 @@ $radio-button-icon-margin: 5px;
     &__input:checked ~ .radio-button__label {
       color: $primary-color;
     }
-
+ 
     &__label {
       color: $primary-text-color;
       font-size: em($radio-button-label-fs);
-      margin: em($radio-button-label-margin-y, $radio-button-label-fs) 0;
+      margin-bottom: em($radio-button-label-margin-b, $radio-button-label-fs);
     }
 
     &__icon {

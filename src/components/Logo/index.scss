@@ -1,6 +1,7 @@
 @import "../../sass/helpers";
 
 $padding-y: 10px;
+$margin-b-sm: 15px;
 
 $font-size: $fs-base;
 $font-size-title: 24px;
@@ -14,6 +15,11 @@ $line-height: 30px;
 .logo {
   font-size: $font-size;
   padding: em($padding-y, $font-size) 0;
+
+  @include sm-max {
+    padding: 0;
+    margin-bottom: em($margin-b-sm, $font-size);
+  }
 
   &__link {
     display: flex;

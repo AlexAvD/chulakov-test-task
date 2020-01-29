@@ -4,5 +4,9 @@
  
   &__title {
     text-align: right;
+
+    @include xs-max {
+      text-align: left;
+    }
   }
 }

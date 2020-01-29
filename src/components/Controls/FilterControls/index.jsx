@@ -1,30 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom'
 import { translate } from '../../../locales';
+import { setSortAction, setOrderAction } from '../../../redux/actoins/filterActions'
+import { handleLocationSearch } from '../../../helpers'
 import RadioButton from '../../RadioButton';
 import RadioButtonGroup from '../../RadioButtonGroup';
 import './index.scss'
 
+
 const mapStateToProps = (state) => ({
-  currentLanguage: state.language
+  language: state.language,
+  filter: state.filter
 })
 
-const FilterFields = connect(mapStateToProps)(({ currentLanguage }) => {
-  const fields = [ 'id', 'name', 'age' ];
-  const [ currentField, setCurrentField ] = useState(fields[0]); 
+const mapDispatchToFilterSortProps = (dispatch) => ({
+  setSort: (sort) => dispatch(setSortAction(sort))
+})
+
+const FilterSort = connect(mapStateToProps, mapDispatchToFilterSortProps)(({ language, filter, setSort }) => {
+  const sorts = [ 'id', 'name', 'age' ]; 
+  const history = useHistory();
+  const location = useLocation();
 
   const onChange = (e) => {
-    setCurrentField(e.target.value);
+    setSort(e.target.value);
+
+    history.push(handleLocationSearch(location.search, { sort: e.target.value }));
   };
 
-  const radioButtons = fields.map((field) => {
+  const radioButtons = sorts.map((sort) => {
     return <RadioButton 
-      key={field}
-      isChecked={currentField === field} 
-      value={field}
-      name="fields" 
+      key={sort}
+      isChecked={filter.sort === sort} 
+      value={sort}
+      name="sort" 
     > 
-      {translate(currentLanguage, `filter-sort-field-${field}`)}
+      {translate(language, `filter-sort-field-${sort}`)}
     </RadioButton>
   });
   
@@ -32,7 +44,7 @@ const FilterFields = connect(mapStateToProps)(({ currentLanguage }) => {
     <div className="filter-controls__sort">
       <fieldset className="controls__fieldset">
         <legend className="controls__title">
-          {translate(currentLanguage, 'filter-sort-title')}
+          {translate(language, 'filter-sort-title')}
         </legend>
         
         <RadioButtonGroup onChange={onChange} >
@@ -43,36 +55,42 @@ const FilterFields = connect(mapStateToProps)(({ currentLanguage }) => {
   )
 })
 
+const mapDispatchToFilterOrderProps = (dispatch) => ({
+  setOrder: (order) => dispatch(setOrderAction(order))
+})
 
-const FilterOrder = connect(mapStateToProps)(({ currentLanguage }) => {
-  const [ currentOrder, setCurrentOrder ] = useState("ascending"); 
+const FilterOrder = connect(mapStateToProps, mapDispatchToFilterOrderProps)(({ language, filter, setOrder }) => {
+  const history = useHistory();
+  const location = useLocation();
 
   const onChange = (e) => {
-    setCurrentOrder(e.target.value);
+    setOrder(e.target.value);
+
+    history.push(handleLocationSearch(location.search, { order: e.target.value }));
   };
 
   return (
     <div className="filter-controls__order">
       <fieldset className="controls__fieldset">
         <legend className="controls__title">
-          {translate(currentLanguage, 'filter-order-title')}
+          {translate(language, 'filter-order-title')}
         </legend>
 
         <RadioButtonGroup onChange={onChange} >
           <RadioButton 
-            isChecked={currentOrder === "ascending"} 
+            isChecked={filter.order === "ascending"} 
             value="ascending"
             name="order" 
           >
-            {translate(currentLanguage, "filter-order-ascending")}
+            {translate(language, "filter-order-ascending")}
           </RadioButton>
 
           <RadioButton 
-            isChecked={currentOrder === "descending"} 
+            isChecked={filter.order === "descending"} 
             value="descending"
             name="order" 
           >
-            {translate(currentLanguage, "filter-order-descending")}
+            {translate(language, "filter-order-descending")}
           </RadioButton>
         </RadioButtonGroup>
       </fieldset>
@@ -83,7 +101,7 @@ const FilterOrder = connect(mapStateToProps)(({ currentLanguage }) => {
 const FilterControls = () => {
   return (
     <div className="controls__filter filter-controls">
-      <FilterFields />
+      <FilterSort />
       <FilterOrder /> 
     </div>
   )

@@ -1,23 +1,28 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types';
-import { Search as SearchIcon } from 'react-feather'
 import { translate } from '../../locales'
+import { handleLocationSearch } from '../../helpers'
+import { setSearchAction } from '../../redux/actoins/filterActions';
+import { Search as SearchIcon } from 'react-feather'
 import './index.scss'
 
-const Search = ({ language }) => {
-  const [ search, setSearch ] = useState('');
+const Search = ({ language, setSearch }) => {
+  const [ currentSearch, setCurrentSearch ] = useState('');
+  const history = useHistory();
+  const location = useLocation();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (search) {
-      console.log(search);
-    }
+    setSearch(currentSearch);
+    
+    history.push(handleLocationSearch(location.search, { search: currentSearch }));
   }
 
   const onChange = (e) => {
-    setSearch(e.target.value);
+    setCurrentSearch(e.target.value);
   }
 
   return (
@@ -29,7 +34,7 @@ const Search = ({ language }) => {
         <input
           onChange={onChange}
           className="search__input"
-          value={search}
+          value={currentSearch}
           type="text" 
           placeholder={translate(language, 'search-placeholder')} 
           autoComplete="off" 
@@ -50,7 +55,11 @@ Search.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  language: state.language
+  language: state.language,
 })
 
-export default connect(mapStateToProps)(Search)
+const mapDispatchToProps = (dispatch) => ({
+  setSearch: (search) => dispatch(setSearchAction(search))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

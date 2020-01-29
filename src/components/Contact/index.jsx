@@ -4,6 +4,7 @@ import store from '../../redux/store'
 import { connect } from 'react-redux'
 import { setFavouriteAction } from '../../redux/actoins/dataActions'
 import { translate } from '../../locales'
+import classnames from 'classnames'
 import Avatar from './Avatar'
 import Favourite from './Favourite'
 import Video from './Video'
@@ -33,13 +34,17 @@ const getCorrectAgeSpelling = (spellings, age) => {
   return result;
 }
 
-const Contact = ({ id, image, name, age, phone, phrase, favourite, video, currentLanguage }) => {
+const Contact = ({ id, image, name, age, phone, phrase, favourite, video, currentLanguage, className }) => {
   const handleChange = (id) => () => {
     store.dispatch(setFavouriteAction(id))
   }
 
+  const contactClasses = classnames('contact', className, {
+    'contact--video': video,
+  })
+
   return (
-    <li className={`contacts__item contact${video ? ' contact--video': ''}`} data-id={id}>
+    <li className={contactClasses} data-id={id}>
       <div className="contact__inner">
         <div className="contact__info">
           <div className="contact__info-group">

@@ -4,9 +4,14 @@ $padding-info: 15px;
 
 .contact {
   border-bottom: 1px solid $contact-border-color;
+  display: flex;
   
   &__inner {
     display: flex;
+    width: 100%;
+    margin: 15px;
+    border-radius: 5px;
+    overflow: hidden;
   }
 
   &__info {
@@ -17,6 +22,10 @@ $padding-info: 15px;
 
   &__info-group {
     display: flex;
+
+    @include sm-max {
+      margin-right: 15px;
+    }
   }
 
   &__avatar {
@@ -25,15 +34,26 @@ $padding-info: 15px;
 
   &__info-group {
     flex: 1 1 70%;
+
+    @include md-max {
+      flex: 1 1 40%;
+    }
   }
 
   &__age {
     flex: 1 1 10%;
+
+    
   }
 
   &__phone {
     flex: 1 1 20%;
     padding-right: 45px;
+
+    @include sm-max {
+      flex: 1 1 30%;
+      padding-right: 25px;
+    }
   }
 
   &__name,
@@ -51,9 +71,5 @@ $padding-info: 15px;
   &__phrase,
   &__video {
     display: none;
-  }
-
-  &__video {
-    
   }
 }

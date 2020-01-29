@@ -1,15 +1,7 @@
-@import '../../sass/vars';
+@import '../../sass/helpers';
 
 .header {
   box-shadow: 0 5px 10px 0 $header-shadow-color;
-
-  &__top {
-    background-color: $header-top-bg;
-  }
-
-  &__main {
-    background: linear-gradient(45deg, $primary-color, $secondary-color);
-  }
 }
 
 .header-top,
@@ -20,9 +12,24 @@
   }
 }
 
+.header-top {
+  background-color: $header-top-bg;
+}
+
 .header-main {
+  background: linear-gradient(45deg, $primary-color, $secondary-color);
+
+  &__container.container {
+    padding: 15px;
+  }
+
   &__container {
     justify-content: space-between;
     align-items: center;
+    
+
+    @include sm-max {
+      flex-direction: column;
+    }
   }
 }

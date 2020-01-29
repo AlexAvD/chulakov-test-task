@@ -1,11 +1,25 @@
 @import '../../../sass/helpers';
 
-$sort-margin-r: 50px;
+$margin-b-sm: 15px;
+$sort-margin-r: 30px;
+$sort-margin-b-md: 15px; 
 
 .filter-controls {
   display: flex;
 
+  @include md-max {
+    flex-direction: column;
+  }
+
+  @include xs-max {
+    margin-bottom: em($margin-b-sm);
+  }
+
   &__sort {
     margin-right: em($sort-margin-r);
+
+    @include md-max {
+      margin: 0 0 em($sort-margin-b-md) 0;
+    }
   }
 }
